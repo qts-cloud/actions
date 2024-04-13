@@ -44,7 +44,7 @@ To trigger additional workflows from the tag, you need to set up a deploy key an
 
 3. Navigate to the "Deploy keys" section and click on "Add deploy key". Provide a title, paste the public key (`id_ed25519.pub` content), and ensure "Allow write access" is checked. Then, click "Add key".
 
-4. Navigate to the "Secrets" section and click on "New repository secret". Name the secret (e.g., `COMMIT_KEY`) and paste the private key (`id_ed25519` content) as the value.
+4. Navigate to the "Secrets" section and click on "New repository secret". Name the secret (e.g., `DEPLOY_KEY`) and paste the private key (`id_ed25519` content) as the value.
 5. Ensure the `ssh-key` input uses the correct secret name.
 
 ### Inputs
@@ -82,12 +82,12 @@ jobs:
         uses: qts-cloud/actions/release@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          ssh-key: ${{ secrets.COMMIT_KEY }}
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 ```
 
 ### Notes
 
-- If you provide an `ssh-key`, it will be used for the checkout process. If not, the default `GITHUB_TOKEN` will be used.
+- If you provide a deploy key(`ssh-key`), it will be used for the checkout process. If not, the default `GITHUB_TOKEN` will be used.
 - Ensure you tag versions in your GitHub Action repository (e.g., `v1`, `v1.1`, etc.) so that you can reference specific versions in your workflows.
 - This approach allows you to maintain a standardized release workflow across multiple repositories.
 
