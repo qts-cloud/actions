@@ -25,6 +25,8 @@ A reusable and customizable GitHub Action for standardized PR checks on Docker i
 | Name                | Description                                                                 | Default    |
 |---------------------|-----------------------------------------------------------------------------|------------|
 | `image-name`        | Name of the Docker image.                                                   | (required) |
+| `dockerhub-username`| Dockerhub Username                                                          | (required) |
+| `dockerhub-token`   | DOckerhub Token                                                             | (required) |
 | `dockerfile-path`   | Path to the Dockerfile.                                                     | `Dockerfile` |
 | `context`           | Directory path for Docker build files. Typically the same as Dockerfile.    | `.`        |
 | `build-args`        | Additional build arguments for the Docker build command.                    | `''`       |
