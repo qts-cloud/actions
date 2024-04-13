@@ -104,20 +104,14 @@ runs:
         echo "\`\`\`" >> checks.txt
         echo "</details>" >> checks.txt
 
-    - name: Post comment on PR
+    - name: Comment failure on pre-commit checks
       if: always()
-      uses: actions/github-script@v7
+      uses: mshick/add-pr-comment@v2
       with:
-        github-token: ${{ github.token }}
-        script: |
-          const fs = require('fs');
-          const comment = fs.readFileSync('checks.txt', 'utf8');
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: comment
-          });
+        message-id: docker-tests
+        refresh-message-position: true
+        message-path: |
+          checks.txt
 
     - name: Logout from Docker Hub
       if: always()

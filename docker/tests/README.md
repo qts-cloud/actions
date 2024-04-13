@@ -47,6 +47,8 @@ on:
 jobs:
   pr-checks:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
     - name: Docker Tests
       uses: qts-cloud/actions/docker/tests@main
