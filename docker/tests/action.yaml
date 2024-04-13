@@ -110,11 +110,13 @@ runs:
       with:
         github-token: ${{ github.token }}
         script: |
+          const fs = require('fs');
+          const comment = fs.readFileSync('checks.txt', 'utf8');
           github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: 'Hello from the other side'
+            body: comment
           });
 
     - name: Logout from Docker Hub
