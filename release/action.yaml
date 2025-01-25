@@ -70,7 +70,6 @@ runs:
           @semantic-release/github
           @semantic-release/changelog
           @semantic-release/git
-          conventional-changelog-conventionalcommits@6.1.0
         working_directory: .
         tag_format: ${{ inputs.tag-prefix }}${version}${{ inputs.tag-suffix }}
         dry_run: ${{ inputs.dry-run }}
