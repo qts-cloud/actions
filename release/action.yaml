@@ -65,9 +65,6 @@ runs:
         ci: true
         semantic_version: ${{ inputs.semantic-version }}
         extra_plugins: |
-          @semantic-release/commit-analyzer
-          @semantic-release/release-notes-generator
-          @semantic-release/github
           @semantic-release/changelog
           @semantic-release/git
         working_directory: .
